@@ -1,5 +1,6 @@
 const NAME_REGEX = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$');
-const EMAIL_REGEX = RegExp("[a-zA-Z]+[a-zA-Z0-9]*[- . +_]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$");
+const EMAIL_REGEX = RegExp("[^[0-9A-Za-z]+(([._+-]?)[0-9A-Za-z]+)*@[0-9A-Za-z]+.[a-z]{2,4}.([a-z]{2,3})*$");
+const PHONE_REGEX = RegExp('^[0-9]{1,2}\\s{1}[0-9]{10}$');
 
 const text = document.querySelector('#text');
 const textError = document.querySelector('.text-error');
@@ -29,3 +30,12 @@ email.addEventListener('input', function() {
     }
 });
 
+const telephone = document.querySelector('#tel');
+const telephoneError = document.querySelector('.tel-error');
+telephone.addEventListener('input', function() {
+    if (PHONE_REGEX.test(telephone.value)) {
+        telephoneError.textContent = "";
+    } else {
+        telephoneError.textContent = "MOBILE NUMBER Is Incorrect";
+    }
+});
